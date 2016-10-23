@@ -1,0 +1,9 @@
+<h1>GraphQL Blog Demo</h1>
+
+<% if signed_in? %>
+  <h2>Hi <%= current_user.email %></h2>
+  <%= link_to "Sign Out", sign_out_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign Up", sign_up_path %>
+  <%= link_to "Sign In", sign_in_path %>
+<% end %>

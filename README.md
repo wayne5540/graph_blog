@@ -13,7 +13,7 @@ Demo app showing how to build a simple blog with GraphQL API.
   * I can delete my post through API
 
 * As an User, I can search every posts by title
-* As an User, I can search users by name
+* As an User, I can search users by email
 
 ## Licence
 
