@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_token :api_token
   include Clearance::User
+
+  has_many :posts
 end
 
 # == Schema Information
