@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_secure_token :api_token
   include Clearance::User
 end
 
@@ -13,9 +14,11 @@ end
 #  encrypted_password :string(128)      not null
 #  confirmation_token :string(128)
 #  remember_token     :string(128)      not null
+#  api_token          :string
 #
 # Indexes
 #
+#  index_users_on_api_token       (api_token) UNIQUE
 #  index_users_on_email           (email)
 #  index_users_on_remember_token  (remember_token)
 #
