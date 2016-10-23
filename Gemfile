@@ -13,12 +13,12 @@ gem "clearance"
 gem 'rack-cors'
 gem 'graphql'
 gem 'has_secure_token'
+gem 'graphiql-rails'
 
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'annotate'
-  gem 'graphiql-rails'
   gem 'guard-rspec', require: false
 end
 
