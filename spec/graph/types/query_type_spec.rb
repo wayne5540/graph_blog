@@ -1,9 +1,8 @@
-RSpec.describe 'QueryType' do
+RSpec.describe QueryType do
   let(:user) { create(:user) }
-  let(:user_type) { Schema.types["Query"] }
 
   describe '.fields' do
-    subject { user_type.fields }
+    subject { described_class.fields }
 
     specify do
       expect(subject.keys).to match_array(%w(viewer))
@@ -11,7 +10,7 @@ RSpec.describe 'QueryType' do
   end
 
   describe '#viewer' do
-    subject { user_type.fields['viewer'] }
+    subject { described_class.fields['viewer'] }
     
     specify do
       expect(subject.type).to be UserType

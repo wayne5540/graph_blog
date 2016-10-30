@@ -1,10 +1,10 @@
-RSpec.describe UserType do
-  let(:user) { create(:user) }
+RSpec.describe PostType do
+  let(:post) { create(:post) }
 
   describe '.fields' do
     subject { described_class.fields }
     specify do
-      expect(subject.keys).to match_array(%w(id email updated_at created_at))
+      expect(subject.keys).to match_array(%w(id title content updated_at created_at))
     end
   end
 
@@ -16,7 +16,7 @@ RSpec.describe UserType do
     end
 
     specify do
-      expect(subject.resolve(user, nil, nil)).to eq(user.created_at.to_i)
+      expect(subject.resolve(post, nil, nil)).to eq(post.created_at.to_i)
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.describe UserType do
     end
 
     specify do
-      expect(subject.resolve(user, nil, nil)).to eq(user.updated_at.to_i)
+      expect(subject.resolve(post, nil, nil)).to eq(post.updated_at.to_i)
     end
   end
 end

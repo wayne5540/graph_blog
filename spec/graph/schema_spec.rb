@@ -27,4 +27,30 @@ RSpec.describe Schema do
       end
     end
   end
+
+  describe "createPost" do
+    describe "viewer" do
+      let(:query_string) do
+        %|
+          mutation {
+            createPost(input: { title: "Hello", content: "Hello World!" }) {
+              post {
+                id
+                title
+                content
+              }
+            }
+          }
+        |
+      end
+
+      it 'creates a post' do
+        expect { result }.to change { Post.count }.by(1)
+      end
+
+      it "returns new post" do
+        expect(result["data"]["createPost"]["post"]["id"]).to eq(Post.last.id)
+      end
+    end
+  end
 end
