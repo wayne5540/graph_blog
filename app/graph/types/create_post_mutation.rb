@@ -7,10 +7,6 @@ CreatePostMutation = GraphQL::Relay::Mutation.define do
   return_field :post, PostType
 
   resolve -> (object, inputs, ctx) {
-    post = ctx[:current_user].posts.create(title: inputs[:title], content: inputs[:content])
-
-    {
-      post: post
-    }
+    Graph::CreatePostService.new(inputs, ctx).perform!
   }
 end
