@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_secure_token :api_token
   include Clearance::User
+  has_secure_token :api_token
 
   has_many :posts
 end

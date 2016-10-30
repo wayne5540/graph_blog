@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem "clearance"
 gem 'rack-cors'
-gem 'graphql'
+gem 'graphql', '~> 1.0.0'
 gem 'has_secure_token'
 gem 'graphiql-rails'
 
