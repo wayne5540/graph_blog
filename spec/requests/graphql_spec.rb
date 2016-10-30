@@ -1,7 +1,7 @@
 RSpec.describe "Graphql" do
   describe 'POST /graphql' do
     let(:user) { create(:user) }
-    let(:params) { { query: "", variables: "" } }
+    let(:params) { { query: "", variables: '{"hello": "world"}' } }
     let(:headers) { { "Authorization" => "Token #{user.api_token}" } }
     subject { post '/graphql', params, headers }
 
@@ -22,7 +22,7 @@ RSpec.describe "Graphql" do
     describe 'execute Schema' do
       let(:options) do
         {
-          variables: params[:variables],
+          variables: JSON.load(params[:variables]),
           context: { current_user: user }
         }
       end

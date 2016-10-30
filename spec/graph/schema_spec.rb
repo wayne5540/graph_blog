@@ -32,8 +32,8 @@ RSpec.describe Schema do
     describe "viewer" do
       let(:query_string) do
         %|
-          mutation {
-            createPost(input: { title: "Hello", content: "Hello World!" }) {
+          mutation ($post: CreatePostInput!) {
+            createPost(input: $post) {
               post {
                 id
                 title
@@ -42,6 +42,14 @@ RSpec.describe Schema do
             }
           }
         |
+      end
+      let(:variables) do
+        {
+          "post" => {
+            "title" => "Hello",
+            "content" => "World!"
+          }
+        }
       end
 
       it 'creates a post' do
