@@ -5,7 +5,7 @@ RSpec.describe QueryType do
     subject { described_class.fields }
 
     specify do
-      expect(subject.keys).to match_array(%w(viewer))
+      expect(subject.keys).to match_array(%w(viewer post posts))
     end
   end
 

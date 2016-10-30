@@ -61,4 +61,44 @@ RSpec.describe Schema do
       end
     end
   end
+
+  describe "post" do
+    let(:post) { create(:post, user: user) }
+    let(:query_string) do
+      %|
+        query {
+          post(id: #{post.id}) {
+            id
+          }
+        }
+      |
+    end
+
+
+    it "returns post" do
+      expect(result["data"]["post"]["id"]).to eq(post.id)
+    end
+  end
+
+  describe "posts" do
+    before do
+      create_list(:post, 10, user: user)
+      create_list(:post, 3)
+    end
+
+    let(:query_string) do
+      %|
+        query {
+          posts {
+            id
+          }
+        }
+      |
+    end
+
+
+    it "returns post" do
+      expect(result["data"]["posts"].count).to eq(10)
+    end
+  end
 end
