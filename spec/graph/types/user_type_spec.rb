@@ -3,32 +3,17 @@ RSpec.describe UserType do
 
   describe '.fields' do
     subject { described_class.fields }
+
     specify do
-      expect(subject.keys).to match_array(%w(id email updated_at created_at))
+      expect(subject.keys).to match_array(%w(email))
     end
   end
 
-  describe '#created_at' do
-    subject { described_class.fields['created_at'] }
+  describe '.interfaces' do
+    subject { described_class.interfaces }
 
     specify do
-      expect(subject.type).to be GraphQL::INT_TYPE
-    end
-
-    specify do
-      expect(subject.resolve(user, nil, nil)).to eq(user.created_at.to_i)
-    end
-  end
-
-  describe '#updated_at' do
-    subject { described_class.fields['updated_at'] }
-
-    specify do
-      expect(subject.type).to be GraphQL::INT_TYPE
-    end
-
-    specify do
-      expect(subject.resolve(user, nil, nil)).to eq(user.updated_at.to_i)
+      expect(subject).to match_array([ActiveRecordInterface])
     end
   end
 end
