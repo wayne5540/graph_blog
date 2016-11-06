@@ -2,7 +2,7 @@
 
 Demo app showing how to build a simple blog with GraphQL API.
 
-Slide: https://slides.com/waynechu/deck/live#/
+Slide: http://slides.com/waynechu/graphql
 
 ## Usage
 
